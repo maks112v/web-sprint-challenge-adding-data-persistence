@@ -13,11 +13,11 @@ router.post('/', async (req, res) => {
     res.status(400).json({
       message: 'Please provide a project name and description',
     });
+  } else {
+    const newProject = await Project.create(req.body);
+
+    res.status(201).json(newProject);
   }
-
-  const newProject = await Project.create(req.body);
-
-  res.status(201).json(newProject);
 });
 
 module.exports = router;
