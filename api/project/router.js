@@ -9,6 +9,12 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  if (!req.body.project_name) {
+    res.status(400).json({
+      message: 'Please provide a project name and description',
+    });
+  }
+
   const newProject = await Project.create(req.body);
 
   res.status(201).json(newProject);
