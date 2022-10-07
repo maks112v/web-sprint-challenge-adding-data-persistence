@@ -15,5 +15,5 @@ exports.up = function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = function (knex) {
-  knex.schema.dropTableIfExists('resources');
+  return knex.schema.dropTableIfExists('resources');
 };
